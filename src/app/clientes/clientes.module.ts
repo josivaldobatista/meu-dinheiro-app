@@ -4,17 +4,19 @@ import { FormsModule } from '@angular/forms'
 
 import { ClientesRoutingModule } from './clientes-routing.module';
 import { ClienteFormComponent } from './cliente-form/cliente-form.component';
+import { ClienteListaComponent } from './cliente-lista/cliente-lista.component';
 
 
 @NgModule({
-  declarations: [ClienteFormComponent],
+  declarations: [ClienteFormComponent, ClienteListaComponent],
   imports: [
     CommonModule,
     ClientesRoutingModule,
     FormsModule
   ],
   exports: [
-    ClienteFormComponent
+    ClienteFormComponent,
+    ClienteListaComponent
   ]
 })
 export class ClientesModule { }
