@@ -17,6 +17,10 @@ export class ClientesService {
     return this.http.post<Cliente>(this.baseUrl, cliente);
   }
 
+  update(cliente: Cliente): Observable<any> {
+    return this.http.put<Cliente>(`${this.baseUrl}/${cliente.id}`, cliente);
+  }
+
   getClientes(): Observable<Cliente[]> {
     return this.http.get<Cliente[]>(this.baseUrl);
   }

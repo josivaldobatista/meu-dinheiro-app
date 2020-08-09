@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { Cliente } from '../cliente';
 import { ClientesService } from '../../clientes.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-cliente-form',
@@ -25,13 +26,14 @@ export class ClienteFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let params = this.activatedRouter.params;
-    if (params && params.value && params.value.id) {
-      this.id = params.value.id;
-      this.service.getClienteById(this.id).subscribe(
-        response => this.cliente = response, errorResponse =>this.cliente = new Cliente());
-    }
-
+    let params: Observable<Params> = this.activatedRouter.params;
+    params.subscribe(urlParams => {
+      this.id = urlParams['id'];
+      if (this.id) {
+        this.service.getClienteById(this.id).subscribe(
+          response => this.cliente = response, errorResponse => this.cliente = new Cliente());
+      }
+    })
   }
 
   voltarParaListagem() {
@@ -39,17 +41,24 @@ export class ClienteFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.service.insert(this.cliente)
-      .subscribe(response => {
+    if (this.id) {
+      this.service.update(this.cliente).subscribe(response => {
         this.success = true;
         this.errors = null;
-        this.cliente = response;
-
       }, errorResponse => {
-        this.success = false;
-        this.errors = errorResponse.error.errors;
-      }
-      );
+        this.errors = ['Erro ao atualizar o cliente: ', this.cliente.nome]
+      })
+    } else {
+      this.service.insert(this.cliente)
+        .subscribe(response => {
+          this.success = true;
+          this.errors = null;
+          this.cliente = response;
+        }, errorResponse => {
+          this.success = false;
+          this.errors = errorResponse.error.errors;
+        })
+    }
   }
 
 }
