@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { Cliente } from '../cliente';
 import { ClientesService } from '../../clientes.service';
@@ -14,15 +14,24 @@ export class ClienteFormComponent implements OnInit {
   cliente: Cliente;
   success: boolean = false;
   errors: string[]
+  id: number
 
   constructor(
     private service: ClientesService,
-    private router: Router
-    ) {
+    private router: Router,
+    private activatedRouter: ActivatedRoute
+  ) {
     this.cliente = new Cliente();
   }
 
   ngOnInit(): void {
+    let params = this.activatedRouter.params;
+    if (params && params.value && params.value.id) {
+      this.id = params.value.id;
+      this.service.getClienteById(this.id).subscribe(
+        response => this.cliente = response, errorResponse =>this.cliente = new Cliente());
+    }
+
   }
 
   voltarParaListagem() {
@@ -35,7 +44,7 @@ export class ClienteFormComponent implements OnInit {
         this.success = true;
         this.errors = null;
         this.cliente = response;
-        
+
       }, errorResponse => {
         this.success = false;
         this.errors = errorResponse.error.errors;

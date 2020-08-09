@@ -1,7 +1,7 @@
 <h1 class="mt-4">Cadastro de Clientes</h1>
 <div class="card">
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item active">Informe os dados para cadastrar um Cliente.</li>
+        <li class="breadcrumb-item active">{{ cliente.id ? 'Edição' : 'Cadastro'}}</li>
     </ol>
     <div class="container">
         <form #clienteForm="ngForm" (ngSubmit)="onSubmit()">
@@ -49,9 +49,13 @@
 
             <div class="row">
                 <div class="col-md-3">
-                    <button type="submit" class="btn btn-success">
+                    <button type="submit" class="btn btn-success" *ngIf="!cliente.id">
                         <i class="fa fa-save"></i>
                         Salvar
+                    </button>
+                    <button type="submit" class="btn btn-info" *ngIf="cliente.id">
+                        <i class="fa fa-sync-alt"></i>
+                        Atualizar
                     </button>
                     <button type="button" class="voltar btn btn-secondary ml-3" (click)="voltarParaListagem()">
                         <i class="fa fa-arrow-alt-circle-left"></i>
