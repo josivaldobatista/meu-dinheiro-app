@@ -6,6 +6,17 @@
     <div class="container">
 
         <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-success" role="alert" *ngIf="mensagemSucesso">
+                    {{ mensagemSucesso }}
+                </div>
+                <div class="alert alert-danger" role="alert" *ngIf="mensagemError">
+                    {{ mensagemError }}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
             <div class="col-md-2">
                 <button class="btn btn-outline-primary novo" (click)="novoCadastro()">
                     <i class="fa fa-plus"></i> Novo
@@ -34,8 +45,8 @@
                                 <a class="edit" routerLink="/clientes-form/{{ cliente.id }}">
                                     <i class="fa fa-pencil-alt"></i>
                                 </a>
-                                <a href="#" class="delete" data-toggle="modal" (click)="preparaDelecao(cliente)"
-                                    data-target="#modalDelecao">
+                                <a href="#" class="delete" data-toggle="modal" 
+                                    (click)="preparaDelecao(cliente)" data-target="#modalDelecao">
                                     <i class="far fa-trash-alt"></i>
                                 </a>
                             </td>
@@ -61,8 +72,9 @@
                 <p>Deseja excluir o cliente {{ clienteSelecionado.nome }}?</p>
             </div>
             <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="deletarCliente()" 
+                    data-dismiss="modal">Excluir</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-danger">Excluir</button>
             </div>
         </div>
     </div>

@@ -9,24 +9,28 @@ import { Observable } from 'rxjs';
 })
 export class ClientesService {
 
-  baseUrl = 'http://localhost:8080/api/clientes';
+  BASE_URL = 'http://localhost:8080/api/clientes';
 
   constructor(private http: HttpClient) { }
 
   insert(cliente: Cliente): Observable<Cliente> {
-    return this.http.post<Cliente>(this.baseUrl, cliente);
+    return this.http.post<Cliente>(this.BASE_URL, cliente);
   }
 
   update(cliente: Cliente): Observable<any> {
-    return this.http.put<Cliente>(`${this.baseUrl}/${cliente.id}`, cliente);
+    return this.http.put<Cliente>(`${this.BASE_URL}/${cliente.id}`, cliente);
   }
 
   getClientes(): Observable<Cliente[]> {
-    return this.http.get<Cliente[]>(this.baseUrl);
+    return this.http.get<Cliente[]>(this.BASE_URL);
   }
 
   getClienteById(id: number): Observable<Cliente> {
-    return this.http.get<any>(`${this.baseUrl}/${id}`);
+    return this.http.get<any>(`${this.BASE_URL}/${id}`);
+  }
+
+  deletar(cliente: Cliente): Observable<any> {
+    return this.http.delete<any>(`${this.BASE_URL}/${cliente.id}`)
   }
 
 }
