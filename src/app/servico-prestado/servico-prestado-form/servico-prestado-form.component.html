@@ -6,6 +6,18 @@
     <div class="card-body">
     <div class="container">
         <form #form="ngForm" (submit)="onSubmit()">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-success" role="alert" *ngIf="success == true">
+                        Serviço Prestado salvo com sucesso!
+                    </div>
+                    <div class="alert alert-danger" role="alert" *ngFor="let error of errors">
+                        {{ error }}
+                    </div>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
@@ -24,7 +36,8 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label>Descrição</label>
-                        <input class="form-control" [(ngModel)]="servico.descricao" type="text" name="descricao"
+                        <input class="form-control" [(ngModel)]="servico.descricao" 
+                            type="text" name="descricao"
                             id="inputDescricao">
                     </div>
                 </div>
@@ -33,13 +46,15 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Data</label>
-                        <input class="form-control" [(ngModel)]="servico.data" type="text" name="data" id="inputData">
+                        <input class="form-control" [(ngModel)]="servico.data" 
+                            type="text" name="data" id="inputData">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Preço</label>
-                        <input class="form-control" [(ngModel)]="servico.preco" type="text" name="preco"
+                        <input class="form-control" [(ngModel)]="servico.preco" 
+                            type="text" name="preco"
                             id="inputPreco">
                     </div>
                 </div>

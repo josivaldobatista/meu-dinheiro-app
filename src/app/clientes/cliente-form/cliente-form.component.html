@@ -20,13 +20,15 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>ID:</label>
-                        <input type="text" class="form-control" name="id" [ngModel]="cliente.id" disabled>
+                        <input type="text" class="form-control" name="id" 
+                            [ngModel]="cliente.id" disabled>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Data de Cadastro:</label>
-                        <input type="text" class="form-control" name="dataCadastro" [ngModel]="cliente.dataCadastro"
+                        <input type="text" class="form-control" name="dataCadastro" 
+                            [ngModel]="cliente.dataCadastro"
                             disabled>
                     </div>
                 </div>
@@ -36,13 +38,15 @@
                 <div class="col-md-8">
                     <div class="form-group">
                         <label>Nome*:</label>
-                        <input type="text" class="form-control" name="nome" [(ngModel)]="cliente.nome">
+                        <input type="text" class="form-control" name="nome" 
+                            [(ngModel)]="cliente.nome">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>CPF*:</label>
-                        <input type="text" class="form-control" name="cpf" [(ngModel)]="cliente.cpf">
+                        <input type="text" class="form-control" name="cpf" 
+                            [(ngModel)]="cliente.cpf">
                     </div>
                 </div>
             </div>
@@ -57,7 +61,8 @@
                         <i class="fa fa-sync-alt"></i>
                         Atualizar
                     </button>
-                    <button type="button" class="voltar btn btn-secondary ml-3" (click)="voltarParaListagem()">
+                    <button type="button" class="voltar btn btn-secondary ml-3" 
+                        (click)="voltarParaListagem()">
                         <i class="fa fa-arrow-alt-circle-left"></i>
                         Voltar
                     </button>
