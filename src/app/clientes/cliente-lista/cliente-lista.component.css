@@ -14,3 +14,7 @@ a {
 .delete {
     color: red;
 }
+
+.container {
+    padding: 10px;
+}
