@@ -19,11 +19,11 @@ export class ServicoPrestadoService {
     return this.http.post<ServicoPrestado>(this.API_URL, servicoPrestado);
   }
 
-  buscar(nome: string, mes: number): Observable<ServicoPrestadoBusca> {
+  buscar(nome: string, mes: number): Observable<ServicoPrestadoBusca[]> {
 
     const httpParams = new HttpParams()
       .set("nome", nome)
-      .set("mes", mes.toString());
+      .set("mes", mes ? mes.toString() : ' ');
     
     const url = this.API_URL + "?" + httpParams.toString();
     console.log(url);
