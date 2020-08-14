@@ -1,62 +1,60 @@
 <h1 class="mt-4">Lista de Clientes</h1>
-<div class="card">
-    <div class="card-header">
-        NOVO SERVIÇO
-    </div>
-    <div class="container">
-        <div class="card-body">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="alert alert-success" role="alert" *ngIf="mensagemSucesso">
-                    {{ mensagemSucesso }}
-                </div>
-                <div class="alert alert-danger" role="alert" *ngIf="mensagemError">
-                    {{ mensagemError }}
-                </div>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">Clientes Cadastrados</li>
+    </ol>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success" role="alert" *ngIf="mensagemSucesso">
+                {{ mensagemSucesso }}
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="mensagemError">
+                {{ mensagemError }}
             </div>
         </div>
+    </div>
 
-        <div class="row">
-            <div class="col-md-2">
-                <button class="btn btn-outline-primary novo" (click)="novoCadastro()">
-                    <i class="fa fa-plus"></i> Novo
-                </button>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <table class="table table-condensed table-hover">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nome</th>
-                            <th>CPF</th>
-                            <th>Data Cadastro</th>
-                            <th>Editar/Deletar</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let cliente of clientes">
-                            <td>{{ cliente.id }}</td>
-                            <td>{{ cliente.nome }}</td>
-                            <td>{{ cliente.cpf }}</td>
-                            <td>{{ cliente.dataCadastro }}</td>
-                            <td>
-                                <a class="edit" routerLink="/clientes-form/{{ cliente.id }}">
-                                    <i class="fa fa-pencil-alt"></i>
-                                </a>
-                                <a href="#" class="delete" data-toggle="modal" 
-                                    (click)="preparaDelecao(cliente)" data-target="#modalDelecao">
-                                    <i class="far fa-trash-alt"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+    <div class="row">
+        <div class="col-md-2">
+            <button class="btn btn-outline-primary novo" (click)="novoCadastro()">
+                <i class="fa fa-plus"></i> Novo
+            </button>
         </div>
     </div>
-</div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-condensed table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>Data Cadastro</th>
+                        <th>Editar/Deletar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let cliente of clientes">
+                        <td>{{ cliente.id }}</td>
+                        <td>{{ cliente.nome }}</td>
+                        <td>{{ cliente.cpf }}</td>
+                        <td>{{ cliente.dataCadastro }}</td>
+                        <td>
+                            <a class="edit" routerLink="/clientes-form/{{ cliente.id }}">
+                                <i class="fa fa-pencil-alt"></i>
+                            </a>
+                            <a href="#" class="delete" data-toggle="modal" (click)="preparaDelecao(cliente)"
+                                data-target="#modalDelecao">
+                                <i class="far fa-trash-alt"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
 <!-- Modal -->
@@ -73,7 +71,7 @@
                 <p>Deseja excluir o cliente {{ clienteSelecionado.nome }}?</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" (click)="deletarCliente()" 
+                <button type="button" class="btn btn-danger" (click)="deletarCliente()"
                     data-dismiss="modal">Excluir</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
             </div>

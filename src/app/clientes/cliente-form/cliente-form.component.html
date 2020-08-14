@@ -1,8 +1,9 @@
 <h1 class="mt-4">Cadastro de Clientes</h1>
-<div class="card">
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item active">{{ cliente.id ? 'Edição' : 'Cadastro'}}</li>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">Pesquisa de Serviços</li>
     </ol>
+</nav>
     <div class="container">
         <form #clienteForm="ngForm" (ngSubmit)="onSubmit()">
 
@@ -70,4 +71,3 @@
             </div>
         </form>
     </div>
-</div> <!-- card -->

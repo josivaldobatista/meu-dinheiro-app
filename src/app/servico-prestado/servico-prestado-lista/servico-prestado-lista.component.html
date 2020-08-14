@@ -1,8 +1,9 @@
 <h1 class="mt-4">Serviço Prestado</h1>
-<div class="card">
-    <div class="card-header">
-        CONSULTA DE SERVIÇOS PRESTADOS
-    </div>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">Pesquisa de Serviços</li>
+    </ol>
+</nav>
     <div class="container">
         <form #consultarForm="ngForm" (submit)="buscar()">
             <div class="row">
@@ -24,9 +25,14 @@
             <br>
             <div class="row">
                 <div class="col-md-3">
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btn-info">
                         <i class="fas fa-search"></i>
                         Consultar
+                    </button>
+                    <button type="button" routerLink="/servico-prestado-form"
+                        class="btn btn-outline-primary ml-1">
+                            <i class="fa fa-plus"></i>
+                        Novo
                     </button>
                 </div>
             </div>
@@ -55,7 +61,6 @@
                         </tr>
                     </tBody>
                 </table>
-            </div>
         </div>
     </div>
 </div>
