@@ -42,7 +42,7 @@
                         <td>{{ cliente.cpf }}</td>
                         <td>{{ cliente.dataCadastro }}</td>
                         <td>
-                            <a class="edit" routerLink="/clientes-form/{{ cliente.id }}">
+                            <a class="edit" routerLink="/clientes/form/{{ cliente.id }}">
                                 <i class="fa fa-pencil-alt"></i>
                             </a>
                             <a href="#" class="delete" data-toggle="modal" (click)="preparaDelecao(cliente)"
